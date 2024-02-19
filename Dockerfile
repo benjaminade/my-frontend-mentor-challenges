@@ -1,4 +1,5 @@
 FROM node:14 as build-stage
+# set a working directory
 WORKDIR /app
 COPY packege*.json
 RUN npm install
