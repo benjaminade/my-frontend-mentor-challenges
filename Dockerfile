@@ -1,6 +1,6 @@
 FROM node:14 as build-stage
 WORKDIR /app
-COPY packege*.json
+COPY packege*.json /app/
 RUN npm install
 COPY . .
 RUN npm run build
