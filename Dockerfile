@@ -1,13 +1,13 @@
-FROM node:14 as build-stage
-WORKDIR /app
-COPY package*.json /app/
-RUN npm install
-COPY . .
-RUN npm run build
+# Use the official Nginx image as the base image
 FROM nginx:alpine
-COPY --from=build-stage /app/dist /usr/share/nginx/html
+
+# Copy your static files to the appropriate location in the Nginx container
+COPY index.html /usr/share/nginx/html/
+# COPY styles.css /usr/share/nginx/html/
+COPY images /usr/share/nginx/html/images
+
+# Expose port 80
 EXPOSE 80
-CMD ["nginx" , "-g" , "daemon off;"]
 
-
-
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]
