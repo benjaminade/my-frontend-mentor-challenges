@@ -69,7 +69,7 @@ jobs:
     #     body: "Deployed pull request to http://${{ secrets.EC2_HOST }}. Container name: static-site-${{ github.event.number }}"
     #     repository: ${{ github.repository }}
 
-  cleanup:
-    if: github.event.action == 'closed'
-    runs-on: ubuntu-latest
+  # cleanup:
+  #   if: github.event.action == 'closed'
+  #   runs-on: ubuntu-latest
 
