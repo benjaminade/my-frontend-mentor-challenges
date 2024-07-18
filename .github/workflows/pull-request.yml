@@ -4,9 +4,9 @@ on:
   pull_request:
     types: [opened, synchronize, reopened, closed]
 
-permissions:
-  contents: write
-  pull-requests: write
+# permissions:
+#   contents: write
+#   pull-requests: write
 
 jobs:
 
@@ -62,12 +62,12 @@ jobs:
           docker run -d -p 80:80 --name static-site-${{ github.event.number }} benjaminade/static-site:pr-${{ github.event.number }}
         EOF
 
-    - name: Comment on PR
-      uses: peter-evans/commit-comment@v2
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        body: "Deployed pull request to http://${{ secrets.EC2_HOST }}. Container name: static-site-${{ github.event.number }}"
-        repository: ${{ github.repository }}
+    # - name: Comment on PR
+    #   uses: peter-evans/commit-comment@v2
+    #   with:
+    #     token: ${{ secrets.GITHUB_TOKEN }}
+    #     body: "Deployed pull request to http://${{ secrets.EC2_HOST }}. Container name: static-site-${{ github.event.number }}"
+    #     repository: ${{ github.repository }}
 
   cleanup:
     if: github.event.action == 'closed'
