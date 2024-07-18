@@ -59,7 +59,7 @@ jobs:
           docker pull benjaminade/static-site:pr-${{ github.event.number }}
           docker stop static-site-${{ github.event.number }} || true
           docker rm static-site-${{ github.event.number }} || true
-          docker run -d -p 80:80 --name static-site-${{ github.event.number }} benjaminade/static-site:pr-${{ github.event.number }}
+          docker run -d -p 8080:80 --name static-site-${{ github.event.number }} benjaminade/static-site:pr-${{ github.event.number }}
         EOF
 
     # - name: Comment on PR
