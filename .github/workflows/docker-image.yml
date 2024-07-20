@@ -54,7 +54,7 @@ jobs:
           docker pull benjaminade/static-site:latest
           docker stop static-site || true
           docker rm static-site || true
-          docker run -d -p 80:80 --name static-site benjaminade/static-site:latest
+          docker run -d -p 8090:80 --name static-site benjaminade/static-site:latest
         EOF
 
 
